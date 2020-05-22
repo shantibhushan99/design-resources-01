@@ -30,12 +30,8 @@ import Others from './resources/Others';
 
 import './index.css';
 
-const resources = [
-  ...UIGraphics,
-  ...Fonts,
-  ...Colors,
-  ...Icons,
-  ...Favicons,
+const resources = [...UIGraphics, ...Fonts, ...Colors, ...Icons, ...Favicons];
+const missingResources = [
   ...IconFonts,
   ...StockPhoto,
   ...StockVideo,

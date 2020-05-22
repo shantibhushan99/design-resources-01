@@ -159,14 +159,23 @@ option {
   border: rgba(255, 255, 255, 0.39) solid 1px;
 }
 
-.star-icon {
+.star-icon,
+.list-item-star-icon {
   color: rgb(185, 185, 185);
   grid-area: icon;
   cursor: pointer;
   margin: auto 0.5em auto 0;
 }
+.list-item-star-icon:hover,
 .star-icon:hover {
   fill: rgb(255, 241, 50);
+}
+.list-item-checkbox {
+  display: block;
+}
+
+.list-item-checkbox:checked + .list-item-star-icon {
+  color: rgb(255, 241, 50);
 }
 
 .list-item-info {
