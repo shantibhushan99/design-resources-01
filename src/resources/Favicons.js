@@ -23,7 +23,7 @@ const Favicon1 = [
   },
 ];
 
-const CATEGORY = 'Favicon';
+const CATEGORY = 'Favicons';
 
 const Favicon = Favicon1.map((e, index) => ({
   ...e,

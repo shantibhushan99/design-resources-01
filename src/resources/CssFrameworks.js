@@ -89,9 +89,7 @@ const CssFrameworks1 = [
   {
     title: 'Chota',
     link: 'https://jenil.github.io/chota/',
-    desc: ' A micro ',
-    link: '~3kb',
-    desc: ' CSS framework',
+    desc: ' A micro CSS framework',
   },
   {
     title: 'Blueprint CSS',

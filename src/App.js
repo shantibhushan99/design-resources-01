@@ -30,7 +30,6 @@ import Others from './resources/Others';
 
 import './index.css';
 
-console.log(ReactUILibraries);
 const resources = [
   ...UIGraphics,
   ...Fonts,

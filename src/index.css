@@ -152,17 +152,32 @@ option {
 
 /* --- LIST --- */
 .list-item {
-  display: grid;
+  display: flex;
   border-radius: 5px;
   padding: 0.5em 0.8em;
   margin: 0.5em;
-  text-align: left;
-  position: relative;
-  cursor: pointer;
   border: rgba(255, 255, 255, 0.39) solid 1px;
+}
+
+.star-icon {
+  color: rgb(185, 185, 185);
+  grid-area: icon;
+  cursor: pointer;
+  margin: auto 0.5em auto 0;
+}
+.star-icon:hover {
+  fill: rgb(255, 241, 50);
+}
+
+.list-item-info {
+  width: 100%;
+  display: grid;
+  text-align: left;
+  cursor: pointer;
   grid-template-areas: 'text text category';
   color: #e0e0e0;
   text-decoration: none;
+  grid-area: info;
 }
 
 .list-item:hover {
@@ -172,8 +187,8 @@ option {
 
 .list-item-text {
   width: 100%;
-  margin: 0;
   grid-area: text;
+  margin: auto 0;
 }
 
 .list-item-title {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Star } from '@material-ui/icons';
 
 const PopularMoviePage = ({ resources }) => {
   const [searchTextQuery, setSearchTextQuery] = useState('');
@@ -28,7 +29,7 @@ const PopularMoviePage = ({ resources }) => {
       resource.title.toLowerCase().includes(searchTextQuery.toLowerCase())
     );
     setListedResources(resultsTextInput);
-  }, [searchDropdownQuery, searchTextQuery]);
+  }, [searchDropdownQuery, searchTextQuery, resources]);
 
   const handleTextChange = (e) => {
     e.preventDefault();
@@ -75,19 +76,17 @@ const PopularMoviePage = ({ resources }) => {
       </div>
       <div>
         {listedResources.map((resource) => (
-          <a
-            className='list-item'
-            key={resource.id}
-            target='_blank'
-            href={resource.link}
-          >
-            <p className='list-item-text'>
-              <span className='list-item-title'>{resource.title}</span>
-              <span> | </span>
-              <span className='list-item-desc'>{resource.desc}</span>
-            </p>
-            <h4 className='list-item-category'>{resource.category}</h4>
-          </a>
+          <div className='list-item' key={resource.id}>
+            <Star className='star-icon' />
+            <a className='list-item-info' target='_blank' href={resource.link}>
+              <p className='list-item-text'>
+                <span className='list-item-title'>{resource.title}</span>
+                <span> | </span>
+                <span className='list-item-desc'>{resource.desc}</span>
+              </p>
+              <h4 className='list-item-category'>{resource.category}</h4>
+            </a>
+          </div>
         ))}
       </div>
     </div>
