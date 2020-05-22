@@ -2,18 +2,20 @@ import React, { useState, useEffect } from 'react';
 
 const PopularMoviePage = ({ resources }) => {
   const [searchTextQuery, setSearchTextQuery] = useState('');
-  const [searchDropdownQuery, setSearchDropdownQuery] = useState('All');
+  const [searchDropdownQuery, setSearchDropdownQuery] = useState(
+    'All Categories'
+  );
   const [listedResources, setListedResources] = useState(resources);
 
   const resourceCategories = () => {
     const allCategories = resources.map((resource) => resource.category);
-    return ['All', ...new Set(allCategories)];
+    return ['All Categories', ...new Set(allCategories)];
   };
 
   useEffect(() => {
     //step one, filter the ones from dropdown
     const selectedDropDownResources = () => {
-      if (searchDropdownQuery === 'All') {
+      if (searchDropdownQuery === 'All Categories') {
         return resources;
       } else {
         return resources.filter(
