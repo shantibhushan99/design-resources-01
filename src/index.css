@@ -188,7 +188,7 @@ option {
 }
 
 .list-item-checkbox {
-  display: block;
+  display: none;
 }
 
 .list-item-checkbox:checked + .list-item-star-icon {
