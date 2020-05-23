@@ -7,7 +7,10 @@ const PopularMoviePage = ({ resources }) => {
     'All Categories'
   );
   const [showFavorites, setShowFavorites] = useState(false);
-  const [favoriteResources, setFavoriteResources] = useState([]);
+  const [favoriteResources, setFavoriteResources] = useState(
+    //JSON.parse(localStorage.getItem('favorites')) ||
+    []
+  );
   const [listedResources, setListedResources] = useState(resources);
 
   const resourceCategories = () => {
@@ -15,8 +18,9 @@ const PopularMoviePage = ({ resources }) => {
     return ['All Categories', ...new Set(allCategories)];
   };
 
+  console.log(favoriteResources);
+
   useEffect(() => {
-    console.log(favoriteResources);
     if (showFavorites && favoriteResources.length === 0) {
       alert('You have no Favorites yet');
       setShowFavorites(false);
@@ -45,10 +49,11 @@ const PopularMoviePage = ({ resources }) => {
       const resultsTextInput = selectedDropDownResources().filter((resource) =>
         resource.title.toLowerCase().includes(searchTextQuery.toLowerCase())
       );
+
       setListedResources(resultsTextInput);
     }
 
-    //localStorage.setItem('favorites', favoriteResources);
+    //localStorage.setItem('favorites', JSON.stringify(favoriteResources));
   }, [
     favoriteResources,
     searchDropdownQuery,
@@ -68,17 +73,16 @@ const PopularMoviePage = ({ resources }) => {
   };
 
   const handleFavoriteChange = (e) => {
+    const resource = resources.filter(
+      (resource) => resource.id === e.target.value
+    );
     if (e.target.checked) {
-      const resource = resources.filter(
-        (resource) => resource.id === e.target.value
-      );
-      setFavoriteResources((prevState) => [...prevState, ...resource]);
+      //if resource is not already a favorite
+      resource[0].isFavorite = true;
+      setFavoriteResources(resources.filter((resource) => resource.isFavorite));
     } else {
-      setFavoriteResources(
-        favoriteResources.filter(
-          (existingResource) => existingResource.id !== e.target.value
-        )
-      );
+      resource[0].isFavorite = false;
+      setFavoriteResources(resources.filter((resource) => resource.isFavorite));
     }
   };
 
@@ -123,12 +127,12 @@ const PopularMoviePage = ({ resources }) => {
             </option>
           ))}
         </select>
-        <label>
-          show Favorites
+        <label className='showFavoritesLabel'>
+          Show Favorites
           <input
             checked={showFavorites}
             type='checkbox'
-            style={{ display: 'block' }}
+            style={{ display: 'none' }}
             className='checkbox'
             onChange={toggleFavorites}
           />
@@ -140,6 +144,7 @@ const PopularMoviePage = ({ resources }) => {
           <div className='list-item' key={resource.id}>
             <label style={{ margin: 'auto 0' }}>
               <input
+                checked={resource.isFavorite ? true : false}
                 type='checkbox'
                 value={resource.id}
                 className='list-item-checkbox'

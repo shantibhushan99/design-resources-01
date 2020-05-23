@@ -9,6 +9,7 @@ body {
   font-family: 'Segoe UI', 'Roboto';
   background-color: rgb(29, 29, 29);
   min-width: 320px;
+  overflow-y: scroll;
 }
 
 /* --- NAV --- */
@@ -150,6 +151,23 @@ option {
   border: none;
 }
 
+.showFavoritesLabel {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.star-icon {
+  color: rgb(185, 185, 185);
+  grid-area: icon;
+  cursor: pointer;
+  margin: 0.3em;
+}
+
+.star-icon:hover {
+  fill: rgb(255, 241, 50);
+}
+
 /* --- LIST --- */
 .list-item {
   display: flex;
@@ -159,17 +177,16 @@ option {
   border: rgba(255, 255, 255, 0.39) solid 1px;
 }
 
-.star-icon,
 .list-item-star-icon {
   color: rgb(185, 185, 185);
   grid-area: icon;
   cursor: pointer;
   margin: auto 0.5em auto 0;
 }
-.list-item-star-icon:hover,
-.star-icon:hover {
+.list-item-star-icon:hover {
   fill: rgb(255, 241, 50);
 }
+
 .list-item-checkbox {
   display: block;
 }
