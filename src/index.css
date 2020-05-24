@@ -12,13 +12,24 @@ body {
   overflow-y: scroll;
 }
 
+.to-top {
+  position: fixed;
+  right: 40px;
+  bottom: 30px;
+  background-color: white;
+  border-radius: 500px;
+  color: rgb(32, 32, 32);
+  z-index: 100;
+  cursor: pointer;
+}
+
 /* --- NAV --- */
 
 .nav {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  min-height: 10vh;
+  height: 70px;
   background-color: black;
   position: sticky;
   top: 0;

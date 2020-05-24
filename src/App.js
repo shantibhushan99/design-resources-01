@@ -30,6 +30,7 @@ import DesignInspiration from './resources/DesignInspiration';
 import ImgCompression from './resources/ImgCompression';
 import Others from './resources/Others';
 
+import { KeyboardArrowUp } from '@material-ui/icons';
 import './index.css';
 
 const resources = [
@@ -62,12 +63,23 @@ const resources = [
 ];
 
 const App = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   return (
     <div className='App'>
       <ResourcesProvider resources={resources}>
         <Header />
         <ResourcesInput resources={resources} />
         <ResourcesList resources={resources} />
+        <KeyboardArrowUp
+          className='to-top'
+          style={{ fontSize: 50 }}
+          onClick={scrollToTop}
+        />
       </ResourcesProvider>
     </div>
   );
