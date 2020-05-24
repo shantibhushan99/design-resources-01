@@ -16,7 +16,7 @@ export const ResourcesProvider = (props) => {
 
   useEffect(() => {
     if (showFavorites && favoriteResourcesId.length === 0) {
-      alert('You have no Favorites yet');
+      alert('You Have No Favorites Saved');
       setShowFavorites(false);
     } else {
       //step one, filter the ones from favorites
