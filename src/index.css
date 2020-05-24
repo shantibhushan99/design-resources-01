@@ -16,9 +16,6 @@ body {
 .to-top {
   position: fixed;
   right: 20%;
-  left: 80%;
-
-  right: 40px;
   bottom: 30px;
   background-color: white;
   border-radius: 500px;
@@ -331,5 +328,7 @@ option {
 @media screen and (max-width: 768px) {
   .header-title {
     display: none;
+  }
+  .to-top {
   }
 }
