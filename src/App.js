@@ -1,5 +1,5 @@
 import React from 'react';
-import MovieSearchPage from './components/Resources';
+import ResourcesInput from './components/ResourcesInput';
 import Header from './components/Header';
 import UIGraphics from './resources/UIGraphics';
 import Fonts from './resources/Fonts';
@@ -63,7 +63,7 @@ const App = () => {
   return (
     <div className='App'>
       <Header></Header>
-      <MovieSearchPage resources={resources} />;
+      <ResourcesInput resources={resources} />;
     </div>
   );
 };
