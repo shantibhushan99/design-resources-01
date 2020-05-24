@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { ResourcesContext } from '../context/ResourcesContext';
-
 import { Star } from '@material-ui/icons';
 
 const ResourcesListItem = ({ resource, resources }) => {
@@ -14,7 +13,6 @@ const ResourcesListItem = ({ resource, resources }) => {
       (resource) => resource.id === e.target.value
     );
     if (e.target.checked) {
-      //if resource is not already a favorite
       resource[0].isFavorite = true;
       localStorage.setItem(
         'favorites',
@@ -40,7 +38,7 @@ const ResourcesListItem = ({ resource, resources }) => {
       );
     }
   };
-  
+
   return (
     <div className='list-item'>
       <label style={{ margin: 'auto 0' }}>

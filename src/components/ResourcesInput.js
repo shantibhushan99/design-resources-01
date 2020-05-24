@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import { ResourcesContext } from '../context/ResourcesContext';
 import { Star, Search, Cancel, ArrowDropDown } from '@material-ui/icons';
 
@@ -25,22 +24,15 @@ const ResourcesInput = ({ resources }) => {
   };
 
   const handleTextChange = (e) => {
-    e.preventDefault();
     setSearchTextQueryValue(e.target.value);
   };
 
   const handleDropdownChange = (e) => {
-    e.preventDefault();
     setSearchDropdownQueryValue(e.target.value);
   };
 
   const toggleFavorites = (e) => {
     setShowFavoritesValue(e.target.checked);
-    starStyle(e.target.checked);
-  };
-
-  const starStyle = () => {
-    return showFavoritesValue ? { color: 'yellow' } : { color: 'white' };
   };
 
   const resetTextSearch = () => {
@@ -49,6 +41,15 @@ const ResourcesInput = ({ resources }) => {
   return (
     <div className='search-page'>
       <h1 className='title'>Find Design Resources</h1>
+      <div className='reference-title'>
+        <a
+          target='_blank'
+          rel='noopener noreferrer'
+          href='https://github.com/bradtraversy/design-resources-for-developers'
+        >
+          <h3>Inspired By Brad Traversy's Repo</h3>
+        </a>
+      </div>
       <h2 className='sub-title'>
         {`We found ${listedResourcesValue.length} of ${resources.length} Resources 🧐`}
       </h2>
@@ -58,14 +59,14 @@ const ResourcesInput = ({ resources }) => {
           <input
             className='text-input-input'
             placeholder='Search...'
-            onChange={(e) => handleTextChange(e)}
+            onChange={handleTextChange}
             value={searchTextQueryValue}
           ></input>
           <Search className='search-icon' style={{ fontSize: 30 }} />
           <Cancel
             style={{ fontSize: 30 }}
             className='text-input-cancel'
-            onClick={() => resetTextSearch()}
+            onClick={resetTextSearch}
           />
         </div>
         <div className='dropdown-wrapper'>
@@ -92,7 +93,12 @@ const ResourcesInput = ({ resources }) => {
             className='checkbox'
             onChange={toggleFavorites}
           />
-          <Star className='star-icon' style={starStyle()} />
+          <Star
+            className='star-icon'
+            style={
+              showFavoritesValue ? { color: 'yellow' } : { color: 'white' }
+            }
+          />
         </label>
       </div>
     </div>

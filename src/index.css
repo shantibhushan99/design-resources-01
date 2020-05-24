@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', 'Roboto';
   background-color: rgb(29, 29, 29);
-  min-width: 320px;
+  min-width: 380px;
   overflow-y: scroll;
 }
 
@@ -61,6 +61,24 @@ body {
   color: rgb(228, 228, 228);
   text-align: center;
   margin: 0.5em;
+}
+
+.reference-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  color: rgb(212, 212, 212);
+}
+
+.reference-title a h3:hover {
+  color: rgb(148, 148, 148);
+}
+
+.reference-title a h3 {
+  text-align: center;
+  color: #e0e0e0;
+  font-size: 1.1rem;
 }
 
 /* --- SEARCH-TOP --- */
@@ -175,10 +193,6 @@ option {
   border: none;
   color: white;
   z-index: 1;
-}
-
-.dropdown:focus + .arrow-dropdown {
-  transform: rotate(180deg);
 }
 
 .arrow-dropdown {
@@ -296,11 +310,7 @@ option {
 }
 
 @media screen and (max-width: 768px) {
-  nav h3 {
-    display: none;
-  }
-
-  .nav-link {
+  .header-title {
     display: none;
   }
 }

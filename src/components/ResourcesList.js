@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import ResourcesListItem from './ResourcesListItem';
 import { ResourcesContext } from '../context/ResourcesContext';
 
