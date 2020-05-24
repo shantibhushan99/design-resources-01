@@ -15,7 +15,7 @@ const ResourcesInput = ({ resources }) => {
   const [searchDropdownQueryValue,setSearchDropdownQueryValue] = searchDropdownQuery;
   const [showFavoritesValue, setShowFavoritesValue] = showFavorites;
   const [favoriteResourcesIdValue,setFavoriteResourcesIdValue,] = favoriteResourcesId;
-  const [listedResourcesValue, setListedResourcesValue] = listedResources;
+  const [listedResourcesValue] = listedResources;
 
   const resourceCategories = () => {
     const allCategories = resources.map((resource) => resource.category);
