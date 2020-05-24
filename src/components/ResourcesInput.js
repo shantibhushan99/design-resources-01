@@ -1,88 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
+import { ResourcesContext } from '../context/ResourcesContext';
 import { Star, Search, Cancel, ArrowDropDown } from '@material-ui/icons';
 
-const Resources = ({ resources }) => {
-  const [searchTextQuery, setSearchTextQuery] = useState('');
-  const [searchDropdownQuery, setSearchDropdownQuery] = useState(
-    'All Categories'
-  );
-  const [showFavorites, setShowFavorites] = useState(false);
-  const [favoriteResourcesId, setFavoriteResourcesId] = useState(
-    JSON.parse(localStorage.getItem('favorites')) || []
-  );
-  const [listedResources, setListedResources] = useState(resources);
+const ResourcesInput = ({ resources }) => {
+  const {
+    searchTextQuery,
+    searchDropdownQuery,
+    showFavorites,
+    favoriteResourcesId,
+    listedResources,
+  } = useContext(ResourcesContext);
+
+  const [searchTextQueryValue, setSearchTextQueryValue] = searchTextQuery;
+  const [searchDropdownQueryValue,setSearchDropdownQueryValue] = searchDropdownQuery;
+  const [showFavoritesValue, setShowFavoritesValue] = showFavorites;
+  const [favoriteResourcesIdValue,setFavoriteResourcesIdValue,] = favoriteResourcesId;
+  const [listedResourcesValue, setListedResourcesValue] = listedResources;
 
   const resourceCategories = () => {
     const allCategories = resources.map((resource) => resource.category);
     return ['All Categories', ...new Set(allCategories)];
   };
 
-  useEffect(() => {
-    if (showFavorites && favoriteResourcesId.length === 0) {
-      alert('You have no Favorites yet');
-      setShowFavorites(false);
-    } else {
-      //step one, filter the ones from favorites
-      const selectedFavoriteResources = () => {
-        if (favoriteResourcesId.length > 0 && showFavorites) {
-          const favoriteResources = [];
-          favoriteResourcesId.forEach((favoriteResource) =>
-            resources.forEach((resource) => {
-              if (favoriteResource === resource.id) {
-                favoriteResources.push(resource);
-              }
-            })
-          );
-          return favoriteResources;
-        } else {
-          return resources;
-        }
-      };
-
-      //step two, filter the ones from dropdown
-      const selectedDropDownResources = () => {
-        if (searchDropdownQuery === 'All Categories') {
-          return selectedFavoriteResources();
-        } else {
-          return selectedFavoriteResources().filter(
-            (resource) => resource.category === searchDropdownQuery
-          );
-        }
-      };
-
-      //step three, filter the ones from text input
-      const resultsTextInput = selectedDropDownResources().filter((resource) =>
-        resource.title.toLowerCase().includes(searchTextQuery.toLowerCase())
-      );
-
-      setListedResources(resultsTextInput);
-    }
-    const findFavoritesId = (favoriteResources, resources) => {
-      favoriteResources.forEach((favoriteResource) =>
-        resources.forEach((resource) => {
-          if (favoriteResource === resource.id) {
-            resource.isFavorite = true;
-          }
-        })
-      );
-    };
-    findFavoritesId(favoriteResourcesId, resources);
-  }, [
-    favoriteResourcesId,
-    searchDropdownQuery,
-    searchTextQuery,
-    showFavorites,
-    resources,
-  ]);
-
   const handleTextChange = (e) => {
     e.preventDefault();
-    setSearchTextQuery(e.target.value);
+    setSearchTextQueryValue(e.target.value);
   };
 
   const handleDropdownChange = (e) => {
     e.preventDefault();
-    setSearchDropdownQuery(e.target.value);
+    setSearchDropdownQueryValue(e.target.value);
   };
 
   const handleFavoriteChange = (e) => {
@@ -94,42 +41,41 @@ const Resources = ({ resources }) => {
       resource[0].isFavorite = true;
       localStorage.setItem(
         'favorites',
-        JSON.stringify([e.target.value, ...favoriteResourcesId])
+        JSON.stringify([e.target.value, ...favoriteResourcesIdValue])
       );
-      setFavoriteResourcesId(
+      setFavoriteResourcesIdValue(
         JSON.parse(localStorage.getItem('favorites') || [])
       );
     } else {
       resource[0].isFavorite = false;
-      setFavoriteResourcesId(
+      setFavoriteResourcesIdValue(
         localStorage.setItem(
           'favorites',
           JSON.stringify(
-            favoriteResourcesId.filter(
+            favoriteResourcesIdValue.filter(
               (existingResource) => existingResource !== e.target.value
             )
           )
         )
       );
-      setFavoriteResourcesId(
+      setFavoriteResourcesIdValue(
         JSON.parse(localStorage.getItem('favorites') || [])
       );
     }
   };
 
   const toggleFavorites = (e) => {
-    setShowFavorites(e.target.checked);
+    setShowFavoritesValue(e.target.checked);
     starStyle(e.target.checked);
   };
 
   const starStyle = () => {
-    return showFavorites ? { color: 'yellow' } : { color: 'white' };
+    return showFavoritesValue ? { color: 'yellow' } : { color: 'white' };
   };
 
   const resetTextSearch = () => {
-    setSearchTextQuery('');
+    setSearchTextQueryValue('');
   };
-
   return (
     <div className='search-page'>
       <h1 className='title'>Find Design Resources</h1>
@@ -141,7 +87,7 @@ const Resources = ({ resources }) => {
             className='text-input-input'
             placeholder='Search...'
             onChange={(e) => handleTextChange(e)}
-            value={searchTextQuery}
+            value={searchTextQueryValue}
           ></input>
           <Search className='search-icon' style={{ fontSize: 30 }} />
           <Cancel
@@ -153,7 +99,7 @@ const Resources = ({ resources }) => {
         <div className='dropdown-wrapper'>
           <select
             className='dropdown'
-            value={searchDropdownQuery}
+            value={searchDropdownQueryValue}
             onChange={handleDropdownChange}
           >
             {resourceCategories().map((option) => (
@@ -167,7 +113,7 @@ const Resources = ({ resources }) => {
         <label className='showFavoritesLabel'>
           Show Favorites
           <input
-            checked={showFavorites}
+            checked={showFavoritesValue}
             type='checkbox'
             style={{ display: 'none' }}
             className='checkbox'
@@ -177,7 +123,7 @@ const Resources = ({ resources }) => {
         </label>
       </div>
       <div>
-        {listedResources.map((resource) => (
+        {listedResourcesValue.map((resource) => (
           <div className='list-item' key={resource.id}>
             <label style={{ margin: 'auto 0' }}>
               <input
@@ -210,4 +156,4 @@ const Resources = ({ resources }) => {
   );
 };
 
-export default Resources;
+export default ResourcesInput;

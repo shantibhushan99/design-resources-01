@@ -1,4 +1,5 @@
 import React from 'react';
+import { ResourcesProvider } from './context/ResourcesContext';
 import ResourcesInput from './components/ResourcesInput';
 import Header from './components/Header';
 import UIGraphics from './resources/UIGraphics';
@@ -62,8 +63,10 @@ const resources = [
 const App = () => {
   return (
     <div className='App'>
-      <Header></Header>
-      <ResourcesInput resources={resources} />;
+      <ResourcesProvider resources={resources}>
+        <Header></Header>
+        <ResourcesInput resources={resources} />;
+      </ResourcesProvider>
     </div>
   );
 };
