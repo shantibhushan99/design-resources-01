@@ -30,8 +30,12 @@ import Others from './resources/Others';
 
 import './index.css';
 
-const resources = [...UIGraphics, ...Fonts, ...Colors, ...Icons, ...Favicons];
-const missingResources = [
+const resources = [
+  ...UIGraphics,
+  ...Fonts,
+  ...Colors,
+  ...Icons,
+  ...Favicons,
   ...IconFonts,
   ...StockPhoto,
   ...StockVideo,
@@ -54,6 +58,7 @@ const missingResources = [
   ...ImgCompression,
   ...Others,
 ];
+const missingResources = [];
 
 const App = () => {
   return (

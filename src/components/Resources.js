@@ -7,9 +7,8 @@ const PopularMoviePage = ({ resources }) => {
     'All Categories'
   );
   const [showFavorites, setShowFavorites] = useState(false);
-  const [favoriteResources, setFavoriteResources] = useState(
-    //JSON.parse(localStorage.getItem('favorites')) ||
-    []
+  const [favoriteResourcesId, setFavoriteResourcesId] = useState(
+    JSON.parse(localStorage.getItem('favorites')) || []
   );
   const [listedResources, setListedResources] = useState(resources);
 
@@ -18,16 +17,24 @@ const PopularMoviePage = ({ resources }) => {
     return ['All Categories', ...new Set(allCategories)];
   };
 
-  console.log(favoriteResources);
+  console.log(favoriteResourcesId);
 
   useEffect(() => {
-    if (showFavorites && favoriteResources.length === 0) {
+    if (showFavorites && favoriteResourcesId.length === 0) {
       alert('You have no Favorites yet');
       setShowFavorites(false);
     } else {
       //step one, filter the ones from favorites
       const selectedFavoriteResources = () => {
-        if (favoriteResources.length > 0 && showFavorites) {
+        if (favoriteResourcesId.length > 0 && showFavorites) {
+          const favoriteResources = [];
+          favoriteResourcesId.forEach((favoriteResource) =>
+            resources.forEach((resource) => {
+              if (favoriteResource === resource.id) {
+                favoriteResources.push(resource);
+              }
+            })
+          );
           return favoriteResources;
         } else {
           return resources;
@@ -52,10 +59,18 @@ const PopularMoviePage = ({ resources }) => {
 
       setListedResources(resultsTextInput);
     }
-
-    //localStorage.setItem('favorites', JSON.stringify(favoriteResources));
+    const findFavoritesId = (favoriteResources, resources) => {
+      favoriteResources.forEach((favoriteResource) =>
+        resources.forEach((resource) => {
+          if (favoriteResource === resource.id) {
+            resource.isFavorite = true;
+          }
+        })
+      );
+    };
+    findFavoritesId(favoriteResourcesId, resources);
   }, [
-    favoriteResources,
+    favoriteResourcesId,
     searchDropdownQuery,
     searchTextQuery,
     showFavorites,
@@ -79,10 +94,28 @@ const PopularMoviePage = ({ resources }) => {
     if (e.target.checked) {
       //if resource is not already a favorite
       resource[0].isFavorite = true;
-      setFavoriteResources(resources.filter((resource) => resource.isFavorite));
+      localStorage.setItem(
+        'favorites',
+        JSON.stringify([e.target.value, ...favoriteResourcesId])
+      );
+      setFavoriteResourcesId(
+        JSON.parse(localStorage.getItem('favorites') || [])
+      );
     } else {
       resource[0].isFavorite = false;
-      setFavoriteResources(resources.filter((resource) => resource.isFavorite));
+      setFavoriteResourcesId(
+        localStorage.setItem(
+          'favorites',
+          JSON.stringify(
+            favoriteResourcesId.filter(
+              (existingResource) => existingResource !== e.target.value
+            )
+          )
+        )
+      );
+      setFavoriteResourcesId(
+        JSON.parse(localStorage.getItem('favorites') || [])
+      );
     }
   };
 
