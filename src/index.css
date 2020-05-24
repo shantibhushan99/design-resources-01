@@ -330,6 +330,7 @@ option {
     display: none;
   }
   .to-top {
+    display: none;
   }
   .star-icon:hover {
     fill: white;
