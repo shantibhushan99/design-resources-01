@@ -4,9 +4,12 @@ import { ResourcesContext } from '../context/ResourcesContext';
 import { Star, Search, Cancel, ArrowDropDown } from '@material-ui/icons';
 
 const ResourcesInput = ({ resources }) => {
-  const { searchTextQuery, searchDropdownQuery, showFavorites } = useContext(
-    ResourcesContext
-  );
+  const {
+    searchTextQuery,
+    searchDropdownQuery,
+    showFavorites,
+    listedResources,
+  } = useContext(ResourcesContext);
 
   const [searchTextQueryValue, setSearchTextQueryValue] = searchTextQuery;
   const [
@@ -14,6 +17,7 @@ const ResourcesInput = ({ resources }) => {
     setSearchDropdownQueryValue,
   ] = searchDropdownQuery;
   const [showFavoritesValue, setShowFavoritesValue] = showFavorites;
+  const [listedResourcesValue] = listedResources;
 
   const resourceCategories = () => {
     const allCategories = resources.map((resource) => resource.category);
@@ -45,7 +49,9 @@ const ResourcesInput = ({ resources }) => {
   return (
     <div className='search-page'>
       <h1 className='title'>Find Design Resources</h1>
-      <h2 className='sub-title'>Search like there is no tomorrow 🧐</h2>
+      <h2 className='sub-title'>
+        {`We found ${listedResourcesValue.length} of ${resources.length} Resources 🧐`}
+      </h2>
 
       <div className='inputs'>
         <div className='text-input'>
