@@ -74,13 +74,13 @@ export const ResourcesProvider = (props) => {
 
   return (
     <ResourcesContext.Provider
-      value={
-        { searchTextQuery: [searchTextQuery, setSearchTextQuery],
-         searchDropdownQuery: [searchDropdownQuery, setSearchDropdownQuery],
-         showFavorites: [showFavorites, setShowFavorites],
-         favoriteResourcesId: [favoriteResourcesId, setFavoriteResourcesId],
-         listedResources: [listedResources, setListedResources] }
-      }
+      value={{
+        searchTextQuery: [searchTextQuery, setSearchTextQuery],
+        searchDropdownQuery: [searchDropdownQuery, setSearchDropdownQuery],
+        showFavorites: [showFavorites, setShowFavorites],
+        favoriteResourcesId: [favoriteResourcesId, setFavoriteResourcesId],
+        listedResources: [listedResources, setListedResources],
+      }}
     >
       {props.children}
     </ResourcesContext.Provider>

@@ -1,22 +1,19 @@
 import React, { useContext } from 'react';
-import ResourcesList from './ResourcesList';
 
 import { ResourcesContext } from '../context/ResourcesContext';
 import { Star, Search, Cancel, ArrowDropDown } from '@material-ui/icons';
 
 const ResourcesInput = ({ resources }) => {
-  const {
-    searchTextQuery,
-    searchDropdownQuery,
-    showFavorites,
-    favoriteResourcesId,
-    listedResources,
-  } = useContext(ResourcesContext);
+  const { searchTextQuery, searchDropdownQuery, showFavorites } = useContext(
+    ResourcesContext
+  );
 
   const [searchTextQueryValue, setSearchTextQueryValue] = searchTextQuery;
-  const [searchDropdownQueryValue, setSearchDropdownQueryValue ] = searchDropdownQuery;
+  const [
+    searchDropdownQueryValue,
+    setSearchDropdownQueryValue,
+  ] = searchDropdownQuery;
   const [showFavoritesValue, setShowFavoritesValue] = showFavorites;
-  const [listedResourcesValue] = listedResources;
 
   const resourceCategories = () => {
     const allCategories = resources.map((resource) => resource.category);
@@ -79,7 +76,8 @@ const ResourcesInput = ({ resources }) => {
           </select>
           <ArrowDropDown className='arrow-dropdown' style={{ fontSize: 50 }} />
         </div>
-        <label className='showFavoritesLabel'>
+        <div className='show-favorites-label-wrapper'></div>
+        <label className='show-favorites-label'>
           Show Favorites
           <input
             checked={showFavoritesValue}
@@ -90,15 +88,6 @@ const ResourcesInput = ({ resources }) => {
           />
           <Star className='star-icon' style={starStyle()} />
         </label>
-      </div>
-      <div>
-        {listedResourcesValue.map((resource) => (
-          <ResourcesList
-            key={resource.id}
-            resource={resource}
-            resources={resources}
-          ></ResourcesList>
-        ))}
       </div>
     </div>
   );

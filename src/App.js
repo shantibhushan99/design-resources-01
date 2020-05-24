@@ -1,6 +1,7 @@
 import React from 'react';
 import { ResourcesProvider } from './context/ResourcesContext';
 import ResourcesInput from './components/ResourcesInput';
+import ResourcesList from './components/ResourcesList';
 import Header from './components/Header';
 import UIGraphics from './resources/UIGraphics';
 import Fonts from './resources/Fonts';
@@ -64,8 +65,9 @@ const App = () => {
   return (
     <div className='App'>
       <ResourcesProvider resources={resources}>
-        <Header></Header>
-        <ResourcesInput resources={resources} />;
+        <Header />
+        <ResourcesInput resources={resources} />
+        <ResourcesList resources={resources} />
       </ResourcesProvider>
     </div>
   );
