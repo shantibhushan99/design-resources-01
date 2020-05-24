@@ -10,10 +10,14 @@ body {
   background-color: rgb(29, 29, 29);
   min-width: 380px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .to-top {
   position: fixed;
+  right: 20%;
+  left: 80%;
+
   right: 40px;
   bottom: 30px;
   background-color: white;
@@ -21,6 +25,10 @@ body {
   color: rgb(32, 32, 32);
   z-index: 100;
   cursor: pointer;
+}
+
+.to-top:hover {
+  background-color: rgb(173, 173, 173);
 }
 
 /* --- NAV --- */

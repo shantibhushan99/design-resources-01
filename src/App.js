@@ -77,7 +77,7 @@ const App = () => {
         <ResourcesList resources={resources} />
         <KeyboardArrowUp
           className='to-top'
-          style={{ fontSize: 50 }}
+          style={{ fontSize: 45 }}
           onClick={scrollToTop}
         />
       </ResourcesProvider>
