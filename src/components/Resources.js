@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Star } from '@material-ui/icons';
+import { Star, Search, Cancel, ArrowDropDown } from '@material-ui/icons';
 
-const PopularMoviePage = ({ resources }) => {
+const Resources = ({ resources }) => {
   const [searchTextQuery, setSearchTextQuery] = useState('');
   const [searchDropdownQuery, setSearchDropdownQuery] = useState(
     'All Categories'
@@ -16,8 +16,6 @@ const PopularMoviePage = ({ resources }) => {
     const allCategories = resources.map((resource) => resource.category);
     return ['All Categories', ...new Set(allCategories)];
   };
-
-  console.log(favoriteResourcesId);
 
   useEffect(() => {
     if (showFavorites && favoriteResourcesId.length === 0) {
@@ -145,21 +143,27 @@ const PopularMoviePage = ({ resources }) => {
             onChange={(e) => handleTextChange(e)}
             value={searchTextQuery}
           ></input>
-          <span className='text-input-cancel' onClick={() => resetTextSearch()}>
-            x
-          </span>
+          <Search className='search-icon' style={{ fontSize: 30 }} />
+          <Cancel
+            style={{ fontSize: 30 }}
+            className='text-input-cancel'
+            onClick={() => resetTextSearch()}
+          />
         </div>
-        <select
-          className='dropdown'
-          value={searchDropdownQuery}
-          onChange={handleDropdownChange}
-        >
-          {resourceCategories().map((option) => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
+        <div className='dropdown-wrapper'>
+          <select
+            className='dropdown'
+            value={searchDropdownQuery}
+            onChange={handleDropdownChange}
+          >
+            {resourceCategories().map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <ArrowDropDown className='arrow-dropdown' style={{ fontSize: 50 }} />
+        </div>
         <label className='showFavoritesLabel'>
           Show Favorites
           <input
@@ -206,4 +210,4 @@ const PopularMoviePage = ({ resources }) => {
   );
 };
 
-export default PopularMoviePage;
+export default Resources;

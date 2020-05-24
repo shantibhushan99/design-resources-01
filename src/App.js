@@ -58,7 +58,6 @@ const resources = [
   ...ImgCompression,
   ...Others,
 ];
-const missingResources = [];
 
 const App = () => {
   return (
