@@ -75,11 +75,6 @@ const App = () => {
         <Header />
         <ResourcesInput resources={resources} />
         <ResourcesList resources={resources} />
-        <KeyboardArrowUp
-          className='to-top'
-          style={{ fontSize: 45 }}
-          onClick={scrollToTop}
-        />
       </ResourcesProvider>
     </div>
   );

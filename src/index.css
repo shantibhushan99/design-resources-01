@@ -332,11 +332,4 @@ option {
   .to-top {
     display: none !important;
   }
-  .star-icon:hover {
-    fill: white;
-  }
-
-  .list-item-star-icon:hover {
-    fill: rgb(185, 185, 185);
-  }
 }
