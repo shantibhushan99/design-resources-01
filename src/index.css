@@ -215,7 +215,8 @@ option {
 
 .nothing-found-msg {
   color: white;
-  font-size: 40px;
+  margin: 1em;
+  font-size: 30px;
   text-align: center;
 }
 

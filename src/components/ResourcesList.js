@@ -7,7 +7,7 @@ const ResourcesList = ({ resources }) => {
   const [listedResourcesValue] = listedResources;
 
   if (listedResourcesValue.length === 0) {
-    return <div className='nothing-found-msg'>hiiiiiiiiiiiiiiiii</div>;
+    return <div className='nothing-found-msg'>No resources found 😯</div>;
   } else {
     return (
       <div className='resources-list'>
