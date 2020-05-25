@@ -58,10 +58,10 @@ const ResourcesListItem = ({ resource, resources }) => {
         rel='noopener noreferrer'
         href={resource.link}
       >
-        <p className='list-item-text'>
+        <div className='list-item-text'>
           <span className='list-item-title'>{resource.title}</span>
           <span className='list-item-desc'>{resource.desc}</span>
-        </p>
+        </div>
         <h4 className='list-item-category'>{resource.category}</h4>
       </a>
     </div>
