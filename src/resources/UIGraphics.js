@@ -2,7 +2,7 @@ const UIGraphics1 = [
   {
     title: 'UI Design Daily',
     link: 'https://uidesigndaily.com/',
-    desc: ' Awesome UI Components of all types',
+    desc: 'Awesome UI Components of all types',
   },
   {
     title: '100 Daily UI',

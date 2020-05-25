@@ -2,12 +2,12 @@ const SvelteUILibraries1 = [
   {
     title: 'Svelte Material UI',
     link: 'https://sveltematerialui.com/',
-    desc: ' UI library for Svelte based on Material Design',
+    desc: 'UI library for Svelte based on Material Design',
   },
   {
     title: 'SvelteStrap',
     link: 'https://bestguy.github.io/sveltestrap/',
-    desc: ' UI library for Svelte based on the Bootstrap framework ',
+    desc: 'UI library for Svelte based on the Bootstrap framework ',
   },
   {
     title: 'Svelte Flat UI',

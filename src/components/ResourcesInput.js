@@ -40,7 +40,7 @@ const ResourcesInput = ({ resources }) => {
   };
   return (
     <div className='search-page'>
-      <h1 className='title'>Find Design Resources</h1>
+      <h1 className='title'>Find Design Resources 🧐</h1>
       <div className='reference-title'>
         <a
           target='_blank'
@@ -50,24 +50,22 @@ const ResourcesInput = ({ resources }) => {
           <h3>Inspired By Brad Traversy's Repo</h3>
         </a>
       </div>
-      <h2 className='sub-title'>
-        {`We found ${listedResourcesValue.length} of ${resources.length} Resources 🧐`}
-      </h2>
 
       <div className='inputs'>
-        <div className='text-input'>
-          <input
-            className='text-input-input'
-            placeholder='Search...'
-            onChange={handleTextChange}
-            value={searchTextQueryValue}
-          ></input>
-          <Search className='search-icon' style={{ fontSize: 30 }} />
-          <Cancel
-            style={{ fontSize: 30 }}
-            className='text-input-cancel'
-            onClick={resetTextSearch}
-          />
+        <div className='text-input-wrapper'>
+          <div className='text-input'>
+            <input
+              className='text-input-input'
+              placeholder='Search...'
+              onChange={handleTextChange}
+              value={searchTextQueryValue}
+            ></input>
+            <Search className='search-icon' />
+            <Cancel className='text-input-cancel' onClick={resetTextSearch} />
+          </div>
+          <h3 className='counter'>
+            {`Found ${listedResourcesValue.length} of ${resources.length} `}
+          </h3>
         </div>
         <div className='dropdown-wrapper'>
           <select
@@ -81,7 +79,7 @@ const ResourcesInput = ({ resources }) => {
               </option>
             ))}
           </select>
-          <ArrowDropDown className='arrow-dropdown' style={{ fontSize: 50 }} />
+          <ArrowDropDown className='arrow-dropdown' />
         </div>
         <div className='show-favorites-label-wrapper'></div>
         <label className='show-favorites-label'>
