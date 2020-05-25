@@ -40,7 +40,12 @@ const ResourcesInput = ({ resources }) => {
   };
   return (
     <div className='search-page'>
-      <h1 className='title'>Find Design Resources 🧐</h1>
+      <h1 className='title'>
+        Find Design Resources
+        <span role='img' aria-label='search'>
+          🧐
+        </span>
+      </h1>
       <div className='reference-title'>
         <a
           target='_blank'

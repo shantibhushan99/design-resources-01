@@ -7,7 +7,14 @@ const ResourcesList = ({ resources }) => {
   const [listedResourcesValue] = listedResources;
 
   if (listedResourcesValue.length === 0) {
-    return <div className='nothing-found-msg'>No resources found 😯</div>;
+    return (
+      <h3 className='nothing-found-msg'>
+        No resources found
+        <span role='img' aria-label='search'>
+          😯
+        </span>
+      </h3>
+    );
   } else {
     return (
       <div className='resources-list'>
