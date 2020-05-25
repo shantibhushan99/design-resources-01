@@ -301,7 +301,6 @@ option {
   grid-template-areas: 'text text category';
   color: #e0e0e0;
   text-decoration: none;
-  grid-area: info;
 }
 
 .list-item:hover {
@@ -333,8 +332,7 @@ option {
 }
 
 .list-item-category {
-  justify-self: flex-end;
-  align-self: flex-end;
+  justify-self: end;
   text-align: right;
   font-style: italic;
   margin: 0.3em 0.3em 0.3em 0.7em;
@@ -346,6 +344,9 @@ option {
 @media screen and (max-width: 768px) {
   .header-title {
     display: none;
+  }
+  .to-top {
+    display: none !important;
   }
 
   .title {
@@ -368,7 +369,18 @@ option {
     width: 90%;
   }
 
-  .to-top {
-    display: none !important;
+  .list-item-text {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .list-item-desc {
+    width: 100%;
+  }
+
+  .list-item-title::after {
+    content: '';
+    margin: 0;
   }
 }
