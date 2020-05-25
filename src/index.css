@@ -323,6 +323,7 @@ option {
 
 .list-item-title::after {
   content: '|';
+  margin: 0 0 0 0.2em;
 }
 
 .list-item-desc {

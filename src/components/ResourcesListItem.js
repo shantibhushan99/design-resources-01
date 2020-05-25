@@ -60,7 +60,6 @@ const ResourcesListItem = ({ resource, resources }) => {
       >
         <p className='list-item-text'>
           <span className='list-item-title'>{resource.title}</span>
-          <span> | </span>
           <span className='list-item-desc'>{resource.desc}</span>
         </p>
         <h4 className='list-item-category'>{resource.category}</h4>
